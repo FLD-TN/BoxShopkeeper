@@ -1,0 +1,340 @@
+# Màu:
+#   - Thẻ bảng màu: <text> <muted> <accent> <success> <error> (mã màu đặt ở gui.palette trong config.yml)
+#   - RGB: <#FF8800>   hoặc   &#FF8800
+#   - Màu có tên: <red> <gold> <aqua>...   hoặc mã cũ &a &6 &c...
+#   - Kiểu chữ: <bold> <italic> <underlined> <strikethrough>   hoặc &l &o &n &m;  <reset> hoặc &r để về mặc định
+#   - Chuyển màu: <gradient:#FF0000:#FFD479>chữ</gradient>   <rainbow>chữ</rainbow>
+# Xuống dòng / dòng trống trong lore: viết dạng danh sách, '' là một dòng trống:
+#   header:
+#     - ''
+#     - '<muted>Nguyên liệu'
+#   hoặc viết \n trong chuỗi: header: '\n<muted>Nguyên liệu'
+# Placeholder dạng %ten% không bao giờ bị đổi màu.
+# Để trống một tin nhắn ('') thì tin nhắn đó sẽ không được gửi.
+
+prefix: '&8(<#33FD42>&lB<#44F651>&lo<#55EF60>&lx<#65E96F>&lP<#76E27E>&lv<#87DB8D>&lP&r&8) '
+
+trade:
+  success: '<success>Trao đổi thành công %item%'
+  not-enough: '<error>Không đủ nguyên liệu để trao đổi'
+  inventory-full: '<error>Túi đồ không đủ chỗ trống'
+  disabled: '<error>Trao đổi này hiện không khả dụng'
+  changed: '<error>Trao đổi vừa được cập nhật, hãy thử lại'
+  gamemode: '<error>Không thể trao đổi ở chế độ chơi này'
+  state: '<error>Không thể trao đổi lúc này'
+  # %need% %have% = số tiền theo màu của loại tiền (ví dụ 500$), %currency% = tên tiền
+  not-enough-currency: '<error>Không đủ tiền: cần %need%<error>, đang có %have%'
+  currency-unavailable: '<error><text>%currency% <error>tạm thời không khả dụng'
+  currency-failed: '<error>Không trừ được <text>%currency%<error>, trao đổi đã hủy'
+
+update:
+  no-mmoitems: '<error>MMOItems chưa được cài hoặc chưa bật'
+  incompatible: '<error>Phiên bản MMOItems không tương thích, xem console'
+  locked: '<error><text>%shop% <error>đang được <text>%player% <error>chỉnh sửa, bỏ qua'
+  problem: '<error><text>%item% <muted>(%shop%/%trade%) <error>%reason%<muted>, giữ nguyên'
+  more-problems: '<muted>… và <text>%count% <muted>item khác, xem console'
+  reason:
+    not-found: 'không tìm thấy trong MMOItems'
+    too-large: 'item quá lớn'
+  unchanged: '<muted>%shop%: không có item MMOItems nào cần cập nhật'
+  shop: '<success><text>%shop%<success>: đã cập nhật <text>%items% <success>item trong <text>%trades% <success>trade'
+  shop-preview: '<muted>%shop%: sẽ cập nhật <text>%items% <muted>item trong <text>%trades% <muted>trade'
+  done: '<success>Xong: <text>%items% <success>item trong <text>%shops% <success>mục chế tạo, đã tạo backup'
+  preview-done: '<muted>Xem trước: <text>%items% <muted>item trong <text>%shops% <muted>mục chế tạo. Chưa ghi gì, chạy lại không có <text>preview <muted>để áp dụng'
+
+currency:
+  given: '<success>Đã nhận token %cost%'
+  unknown: '<error>Loại tiền tệ không tồn tại: <text>%type% <muted>(vault, points, gem)'
+  amount: '<error>Số tiền phải là số nguyên từ 1 đến <text>%max%'
+  inventory-full: '<error>Túi đồ không còn chỗ trống'
+  unavailable-warning: '<muted>Lưu ý: %currency% chưa được cài hoặc chưa bật, trao đổi dùng token này sẽ tạm khóa'
+
+shop:
+  unknown: '<error>Không tìm thấy mục chế tạo <text>%shop%'
+  empty: '<muted>Chưa có vật phẩm để trao đổi'
+
+command:
+  usage: '<muted>Cách dùng: <text>%usage%'
+  no-permission: '<error>Bạn không có quyền làm điều này'
+  player-only: '<error>Lệnh này chỉ dùng được trong game'
+  player-offline: '<error>Người chơi <text>%player% <error>không trực tuyến'
+  opened-for: '<muted>Đã mở <text>%shop% <muted>cho <text>%player%'
+  target-no-access: '<error><text>%player% <error>không có quyền mở <text>%shop%'
+  error: '<error>Đã xảy ra lỗi, thao tác đã bị hủy'
+
+editor:
+  locked: '<error><text>%shop% <error>đang được <text>%player% <error>chỉnh sửa'
+  saved: '<success>Đã lưu <text>%shop%'
+  discarded: '<muted>Đã hủy các thay đổi'
+  invalid: '<error>Trao đổi cần ít nhất một nguyên liệu và một vật phẩm nhận'
+  limit: '<error>Đã đạt giới hạn: <text>%limit%'
+  item-too-large: '<error>Vật phẩm quá lớn để làm mẫu'
+  prompt: '<muted>Nhập <text>%what% <muted>vào chat, hoặc gõ <text>cancel <muted>để hủy'
+  prompt-timeout: '<muted>Hết thời gian nhập'
+  prompt-cancelled: '<muted>Đã hủy nhập'
+  invalid-id: '<error>Tên chỉ gồm 1–32 ký tự a–z, 0–9 và _'
+  id-exists: '<error>Đã có mục chế tạo tên <text>%shop%'
+  delete-confirm: '<muted>Gõ lại lệnh trong 10 giây để xóa <text>%shop%'
+  deleted: '<success>Đã xóa <text>%shop%'
+  invalid-number: '<error>Cần nhập một số nguyên'
+  broken-trade: '<error>Trao đổi này bị lỗi dữ liệu, chỉ có thể xóa'
+  description-line: '<muted>Đã thêm dòng <text>%line%<muted>, gõ <text>done <muted>để xong'
+  currency-invalid: '<error>Token tiền tệ không hợp lệ'
+  currency-result: '<error>Tiền tệ chỉ dùng làm nguyên liệu, không làm phần thưởng'
+  currency-too-large: '<error>Tổng <text>%currency% <error>vượt quá giới hạn <text>%max%'
+  move-picked: '<muted>Đang di chuyển <text>%id%<muted>, bấm vào vị trí mới để đặt, bấm lại vào nó để hủy'
+  move-cancelled: '<muted>Đã hủy di chuyển'
+  moved: '<success>Đã chuyển <text>%id% <success>tới vị trí <text>%position%'
+  prompt-stale: '<error>Bạn đã chuyển sang mục chế tạo khác, nội dung vừa nhập không được áp dụng'
+  save-failed: '<error>Không ghi được file của <text>%shop%<error>, thay đổi sẽ mất khi reload, xem console'
+  what:
+    id: 'tên mục chế tạo mới'
+    name: 'tên hiển thị'
+    description: 'mô tả, mỗi tin nhắn một dòng, gõ done để xong'
+    order: 'thứ tự hiển thị (số nguyên)'
+  limits:
+    shops: 'tối đa %max% mục chế tạo'
+    trades: 'tối đa %max% trao đổi mỗi mục'
+    ingredients: 'tối đa %max% nguyên liệu'
+    display-slots: 'tối đa %max% ô hiển thị nguyên liệu'
+    name: 'tên tối đa %max% ký tự'
+    description-lines: 'mô tả tối đa %max% dòng'
+    description-chars: 'mỗi dòng mô tả tối đa %max% ký tự'
+
+reload:
+  done: '<success>Đã tải lại <text>%shops% <success>mục chế tạo'
+  refused: '<error>Không thể tải lại khi đang có người chỉnh sửa'
+  failed: '<error>Tải lại thất bại, xem console; cấu hình cũ được giữ nguyên'
+
+# Cú pháp lệnh: giữ nguyên
+syntax:
+  menu: '/chetao'
+  help: '/chetao help'
+  open: '/chetao open <tên>'
+  open-other: '/chetao open <tên> <người chơi>'
+  admin: '/chetao admin'
+  edit: '/chetao edit <tên>'
+  create: '/chetao create <tên>'
+  delete: '/chetao delete <tên>'
+  list: '/chetao list'
+  reload: '/chetao reload'
+  currency: '/chetao currency <loại> <số tiền>'
+  update-mmoitems: '/chetao update-mmoitems <tên|all> [preview]'
+
+help:
+  header: '<accent>Lệnh chế tạo'
+  menu: '<muted>%syntax% <text>mở menu chế tạo'
+  help: '<muted>%syntax% <text>xem các lệnh'
+  open: '<muted>%syntax% <text>mở một mục chế tạo'
+  open-other: '<muted>%syntax% <text>mở cho người chơi khác'
+  admin: '<muted>%syntax% <text>danh sách chỉnh sửa'
+  edit: '<muted>%syntax% <text>chỉnh sửa một mục'
+  create: '<muted>%syntax% <text>tạo mục mới'
+  delete: '<muted>%syntax% <text>xóa một mục'
+  list: '<muted>%syntax% <text>liệt kê các mục'
+  reload: '<muted>%syntax% <text>tải lại cấu hình'
+  currency: '<muted>%syntax% <text>nhận token tiền tệ cho trình chỉnh sửa'
+  update-mmoitems: '<muted>%syntax% <text>cập nhật item MMOItems trong trade theo bản mới'
+
+list:
+  header: '<accent>Danh sách mục chế tạo <muted>(<text>%count%<muted>)'
+  entry: '<muted>• <text>%id% <muted>trao đổi <text>%trades% <muted>quyền riêng <text>%permission%'
+  empty: '<muted>Chưa có mục chế tạo nào'
+  flag-on: 'có'
+  flag-off: 'không'
+
+gui:
+  title:
+    main-menu: 'Chế Tạo'
+    shop-view: 'Chế Tạo › %shop%'
+    trade-detail: '%shop% › Chi tiết'
+    editor-list: 'Chỉnh sửa › Danh sách'
+    editor-shop: 'Chỉnh sửa › %shop%'
+    editor-trade: 'Chỉnh sửa › Trao đổi #%index%'
+    editor-confirm: 'Chỉnh sửa › Xác nhận xóa'
+
+  header:
+    main-menu:
+      name: '<accent>Chế Tạo'
+      lore:
+        - '<muted>Số mục chế tạo <text>%count%'
+        - '<muted>Chọn một mục để xem các trao đổi'
+    shop-hint: '<muted>Chọn một vật phẩm để trao đổi'
+    editor-list:
+      name: '<accent>Chỉnh sửa'
+      lore:
+        - '<muted>Số mục chế tạo <text>%count%'
+        - '<muted>Bấm một mục để chỉnh sửa'
+
+  controls:
+    back: '<text>Quay lại'
+    previous: '<text>Trang trước'
+    next: '<text>Trang sau'
+    page: '<muted>Trang <text>%page%/%pages%'
+
+  main-menu:
+    name: '<accent>%shop%'
+    description-line: '<muted>%line%'
+    trade-count: '<muted>Số trao đổi <text>%count%'
+    action: '<accent>Chuột trái <muted>để mở'
+    empty: '<muted>Chưa có mục chế tạo nào'
+
+  shop-view:
+    header:
+      - ''
+      - '<muted>Nguyên liệu:'
+      - ''
+    enough: '<success>✔ <text>x%amount% %item%'
+    missing: '<error>✘ <text>x%amount% %item%'
+    # %cost% = số tiền theo định dạng currencies.<loại>.token.name trong config.yml (có màu riêng của loại tiền)
+    currency-enough: '<success>✔ %cost%'
+    currency-missing: '<error>✘ %cost%'
+    currency-unavailable: '<error>✘ %cost% <muted>(không khả dụng)'
+    actions:
+      - ' '
+      - '&8[&eChuột trái&8] <muted>trao đổi 1 lần'
+      - '&8[&bShift + Chuột trái&8] <muted>trao đổi tất cả'
+      - '&8[&fChuột phải&8] <muted>xem chi tiết'
+
+  trade-detail:
+    result-marker:
+      name: '<accent>Vật phẩm nhận'
+      lore:
+        - '<muted>Bấm nút Trao đổi bên dưới'
+    separator: '<muted>────────────────────────'
+    need: '<muted>• Cần: <text>%amount%'
+    have-enough: '<muted>• Đang có: <success>%have% ✔'
+    have-missing: '<muted>• Đang có: <error>%have% ✘'
+    currency-unavailable: '<muted>• Đang có: <error>không khả dụng ✘'
+
+  trade-button:
+    name: '<accent>Trao đổi'
+    enough: '<success>✔ Đủ nguyên liệu'
+    missing: '<error>✘ Không đủ nguyên liệu'
+    receive: '<muted>Nhận <text>x%amount%'
+    once: '&8[&eChuột trái&8] <muted>trao đổi 1 lần'
+    all: '&8[&bShift + Chuột trái&8] <muted>trao đổi tất cả'
+    all-count: '&8[&bShift + Chuột trái&8] <muted>trao đổi tất cả <text>(x%max%)'
+
+  editor:
+    shop-entry:
+      name: '<accent>%shop%'
+      id: '<muted>Tên <text>%id%'
+      trades: '<muted>Số trao đổi <text>%count%'
+      permission: '<muted>Quyền riêng <text>%permission%'
+      action: '<accent>Chuột trái <muted>chỉnh sửa'
+    create-shop:
+      name: '<accent>Tạo mục chế tạo'
+      lore:
+        - '<muted>Nhập tên mới vào chat'
+    empty-list: '<muted>Chưa có mục chế tạo nào'
+    add-trade:
+      name: '<accent>Thêm trao đổi'
+      lore:
+        - '<muted>Mở trình chỉnh sửa trao đổi mới'
+    rename:
+      name: '<accent>Tên hiển thị'
+      lore:
+        - '<muted>Hiện tại <text>%shop%'
+        - '<muted>Chuột trái để đổi'
+    description:
+      name: '<accent>Mô tả'
+      current: '<muted>%line%'
+      lore:
+        - '<muted>Chuột trái để nhập lại'
+    icon:
+      name: '<accent>Biểu tượng'
+      lore:
+        - '<muted>Cầm vật phẩm trên con trỏ'
+        - '<muted>rồi bấm vào đây để đổi'
+    menu-order:
+      name: '<accent>Thứ tự hiển thị'
+      lore:
+        - '<muted>Hiện tại <text>%order%'
+        - '<muted>Chuột trái để đổi'
+    permission:
+      name: '<accent>Yêu cầu quyền'
+      lore:
+        - '<muted>Hiện tại <text>%permission%'
+        - '<muted>Quyền <text>chetao.shop.%id%'
+        - '<muted>Chuột trái để bật hoặc tắt'
+    delete-shop:
+      name: '<error>Xóa mục chế tạo'
+      lore:
+        - '<muted>Chuột trái để xóa'
+    empty-shop: '<muted>Chưa có trao đổi, bấm Thêm trao đổi'
+    trade-entry:
+      id: '<muted>Mã <text>%id%'
+      enabled: '<success>✔ Đang bật'
+      disabled: '<error>✘ Đang tắt'
+      broken: '<error>✘ Dữ liệu lỗi, xem console'
+      ingredients-header: '<muted>Nguyên liệu'
+      ingredient: '<muted>• <text>x%amount% %item%'
+      broken-ingredient: '<muted>• <text>x%amount% <error>dữ liệu lỗi'
+      currency: '<muted>• %cost%'
+      result: '<muted>Nhận <text>x%amount% %item%'
+      actions:
+        - '<accent>Chuột trái <muted>chỉnh sửa'
+        - '<accent>Shift + chuột trái <muted>chuyển sang trái'
+        - '<accent>Chuột phải <muted>chuyển sang phải'
+        - '<accent>Q <muted>xóa'
+      move-hint:
+        - '<accent>Shift + chuột phải <muted>nhặt để di chuyển'
+      picked:
+        - '<accent>▶ Đang chọn, bấm vào vị trí mới để đặt'
+        - '<muted>Bấm lại vào đây để hủy'
+      drop-here:
+        - '<accent>Chuột trái <muted>đặt vào đây'
+    ingredient-slot:
+      name: '<muted>Ô nguyên liệu'
+      lore:
+        - '<muted>Cầm vật phẩm trên con trỏ'
+        - '<muted>rồi bấm vào đây'
+    result-slot:
+      name: '<accent>Vật phẩm nhận'
+      lore:
+        - '<muted>Cầm vật phẩm trên con trỏ'
+        - '<muted>rồi bấm vào đây'
+    result-label: '<accent>Vật phẩm nhận'
+    result-marker:
+      name: '<accent>Vật phẩm nhận'
+      lore:
+        - '<muted>Ô ở giữa là vật phẩm người chơi nhận'
+    ingredient:
+      - '<muted>Số lượng <text>%amount%'
+      - '<muted>Trái +1   Shift + trái +64'
+      - '<muted>Phải −1   Shift + phải −64'
+      - '<muted>Chuột giữa hoặc Q để xóa'
+    currency:
+      - '<muted>Tiền tệ %currency%'
+      - '<muted>Số tiền %cost%'
+      - '<muted>Tạo token mới để đổi số tiền'
+      - '<muted>Chuột giữa hoặc Q để xóa'
+    save:
+      name: '<success>Lưu'
+      lore:
+        - '<muted>Lưu trao đổi này'
+    cancel:
+      name: '<text>Hủy'
+      lore:
+        - '<muted>Bỏ các thay đổi chưa lưu'
+    toggle:
+      name: '<accent>Bật hoặc tắt'
+      enabled: '<success>✔ Đang bật'
+      disabled: '<error>✘ Đang tắt'
+    info:
+      name: '<accent>Thông tin'
+      lore:
+        - '<muted>Mã <text>%id%'
+        - '<muted>Nguyên liệu: <text>%count%/%max-ingredients%'
+        - '<muted>Ô hiển thị: <text>%slots%/%max-slots%'
+      unsaved: '<accent>Có thay đổi chưa lưu'
+    confirm:
+      target: '<text>%target%'
+      name: '<error>Xác nhận xóa <text>%target%'
+      lore:
+        - '<muted>Không thể hoàn tác'
+    deny:
+      name: '<text>Quay lại'
+    flag-on: 'có'
+    flag-off: 'không'

@@ -1,0 +1,20 @@
+name: BoxShopkeeper
+version: '${version}'
+main: com.dex.boxshopkeeper.BoxShopkeeperPlugin
+api-version: '1.21'
+author: Dex
+description: Item-for-item trading shops with an in-game editor
+softdepend: [Vault, PlayerPoints, BoxCore, MMOItems]
+
+commands:
+  chetao:
+    description: Mở menu chế tạo
+    usage: /chetao [open <tên>]
+
+permissions:
+  chetao.use:
+    default: true
+  chetao.admin:
+    default: op
+    children:
+      chetao.use: true

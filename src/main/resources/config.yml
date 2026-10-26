@@ -1,0 +1,128 @@
+trade:
+  cooldown-ticks: 4
+  max-per-click: 2304        # 1..9000
+
+gui:
+  palette:                    # các màu duy nhất plugin được dùng
+    text:    '#FFFFFF'
+    muted:   '#D2CCC0'
+    accent:  '#FFD479'
+    success: '#55FF55'        # = &a
+    error:   '#FF5555'        # = &c
+    title:   '#3F3B36'        # tiêu đề giao diện (nền chest màu sáng nên giữ tối)
+  frame:                      # viền ngoài của mọi giao diện (một màu)
+    material: BLACK_STAINED_GLASS_PANE
+  filler:                     # ô trang trí bên trong (màn chi tiết, trình chỉnh sửa)
+    material: GRAY_STAINED_GLASS_PANE
+  materials:
+    back: ARROW
+    previous: ARROW
+    next: ARROW
+    page: PAPER
+    trade-button: SMITHING_TABLE
+    info: PAPER
+    header: CRAFTING_TABLE
+    detail-background: BLACK_STAINED_GLASS_PANE   # nền màn chi tiết trade
+    default-shop-icon: CHEST
+    broken-trade: BARRIER
+    # trình chỉnh sửa
+    create-shop: WRITABLE_BOOK
+    add-trade: CRAFTING_TABLE
+    rename: NAME_TAG
+    description: BOOK
+    icon: ITEM_FRAME
+    menu-order: COMPARATOR
+    permission: TRIPWIRE_HOOK
+    delete: BARRIER
+    ingredient-slot: WHITE_STAINED_GLASS_PANE
+    result-slot: LIME_STAINED_GLASS_PANE
+    result-marker: YELLOW_STAINED_GLASS_PANE
+    save: LIME_CONCRETE
+    cancel: ARROW
+    toggle-on: LIME_DYE
+    toggle-off: GRAY_DYE
+    confirm: LIME_DYE
+    deny: GRAY_DYE
+
+limits:
+  shops: 200
+  trades-per-shop: 500
+  ingredients-per-trade: 9    # tối đa 9 (ô vuông 3x3)
+  display-slots-per-trade: 9  # tối đa 9 (ô vuông 3x3)
+  template-bytes: 65536
+  shop-name-chars: 32
+  description-lines: 6
+  description-line-chars: 48
+
+rate-limit:
+  navigation-ticks: 5
+  command-ticks: 20
+  editor-ticks: 2
+
+sounds:
+  click:
+    sound: UI_BUTTON_CLICK
+    volume: 0.4
+    pitch: 1.0
+  success:
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    volume: 0.5
+    pitch: 1.2
+  refused:
+    sound: BLOCK_NOTE_BLOCK_BASS
+    volume: 0.5
+    pitch: 0.8
+
+backups:
+  keep-per-shop: 20
+  min-interval-seconds: 86400   # mỗi mục chỉ backup tối đa 1 lần trong khoảng này, sửa liên tục không đẩy hết backup cũ
+
+logging:
+  enabled: true
+  keep-days: 30
+  queue-size: 10000
+
+# Currencies usable as trade costs. Create an editor token with /chetao currency <type> <amount>.
+# color: màu của loại tiền ('#RRGGBB'). Tên tiền (%currency%) và số tiền (%cost%) đều dùng màu này ở mọi nơi:
+# tin nhắn, token, giao diện. Phần nào trong name / token.name tự ghi màu thì giữ màu đó.
+# Từ 1.3.1: name / token.name / token.lore còn đúng chữ mặc định cũ thì tự dùng chữ mới; chữ đã sửa được giữ.
+currencies:
+  vault:
+    name: '$'                  # tên dùng cho %currency%, nhận mã màu, ví dụ '<#FFD479>Xu'
+    color: '#55FF55'           # = &a, hiện kiểu 1.250$
+    token:
+      material: PLAYER_HEAD
+      custom-model-data: 0     # 0 = none
+      glint: true
+      texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjBmZmFkMzNkMjkzYjYxNzY1ZmM4NmFiNTU2MDJiOTU1YjllMWU3NTdhOGU4ODVkNTAyYjNkYmJhNTQyNTUxNyJ9fX0='              # chỉ dùng khi material: PLAYER_HEAD; nhận Value (Base64) như MMOItems, URL skin hoặc mã hash
+      name: '%amount%%currency%'   # cách hiện một khoản tiền (%cost%): tên token, ô trong GUI, dòng yêu cầu
+      lore:
+        - '<muted>Token tiền tệ cho trình chỉnh sửa'
+        - '<muted>Đặt vào ô nguyên liệu của một trao đổi'
+        - '<muted>để yêu cầu %cost%'
+  points:
+    name: 'Xu'
+    color: '#FFFF55'           # = &e, hiện kiểu 1.250 Xu
+    token:
+      material: PLAYER_HEAD
+      custom-model-data: 0
+      glint: true
+      texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjMxMWU4NDIyNDk3NDUxMTMzMzM4NzhmZDVhOGQ4ZWIyMjgwYmNiYWI3Njg5ZTQ3M2YxNjY5NjIzYTExYzk5NyJ9fX0='
+      name: '%amount% %currency%'
+      lore:
+        - '<muted>Token tiền tệ cho trình chỉnh sửa'
+        - '<muted>Đặt vào ô nguyên liệu của một trao đổi'
+        - '<muted>để yêu cầu %cost%'
+  gem:
+    name: ''                   # empty = use BoxCore's gem display name
+    color: '#8245F8'           # màu gem của BoxCore (gem.color trong config.yml của BoxCore)
+    token:
+      material: PLAYER_HEAD
+      custom-model-data: 0
+      glint: true
+      texture: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODU3YjU3OGU3ZTY3MzZkZWQ5YjRlYzA1MTYyNTU2MDUzMzIzOWNlZjgxOGRkMjhkNmE0YzQ5NjA0YWIyNWI0In19fQ=='
+      name: '%amount% %currency%'
+      lore:
+        - '<muted>Token tiền tệ cho trình chỉnh sửa'
+        - '<muted>Đặt vào ô nguyên liệu của một trao đổi'
+        - '<muted>để yêu cầu %cost%'
